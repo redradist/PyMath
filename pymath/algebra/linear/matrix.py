@@ -14,6 +14,26 @@ class Matrix:
         self._num_cols = num_cols
         self._values = list(values)
 
+    def __add__(self, other):
+        if self._num_rows != other._num_rows:
+            raise ValueError(f'num_rows for left matrix [{self._num_rows}] != [{other._num_rows}] num_rows for left matrix !!')
+        if self._num_cols != other._num_cols:
+            raise ValueError(f'num_cols for left matrix [{self._num_cols}] != [{other._num_cols}] num_cols for left matrix !!')
+        return Matrix(self._num_rows, self._num_cols, list(x + y for x, y in zip(self._values, other._values)))
+
+    def __radd__(self, other):
+        return self.__add__(other)
+
+    def __sub__(self, other):
+        if self._num_rows != other._num_rows:
+            raise ValueError(f'num_rows for left matrix [{self._num_rows}] != [{other._num_rows}] num_rows for left matrix !!')
+        if self._num_cols != other._num_cols:
+            raise ValueError(f'num_cols for left matrix [{self._num_cols}] != [{other._num_cols}] num_cols for left matrix !!')
+        return Matrix(self._num_rows, self._num_cols, list(x - y for x, y in zip(self._values, other._values)))
+
+    def __rsub__(self, other):
+        return self.__add__(other)
+
     def __mul__(self, other):
         if type(other) is Matrix:
             if self._num_cols != other._num_rows:
@@ -58,6 +78,11 @@ class Matrix:
     def __ne__(self, other):
         return not self.__eq__(other)
 
+    def __abs__(self):
+        if self._num_rows != self._num_cols:
+            raise ValueError(f'num_rows [{self._num_rows}] should be equal num_cols [{self._num_cols}]')
+
+        pass
 
 class Identity(Matrix):
     """

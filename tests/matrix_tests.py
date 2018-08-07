@@ -12,6 +12,24 @@ class Testing_LinearMatrix(unittest.TestCase):
         """Currently nothing to do. Use it for reinitialization data after test"""
         pass
 
+    def test__LinearMatrix2x2_Add_Matrix2x2__Valid(self):
+        mat0 = Matrix(2, 2, [1, 1,
+                             1, 1])
+        mat1 = Matrix(2, 2, [1, 1,
+                             1, 1])
+        result = mat0 + mat1
+        self.assertEqual(result, Matrix(2, 2, [2, 2,
+                                               2, 2]))
+
+    def test__LinearMatrix2x2_Sub_Matrix2x2__Valid(self):
+        mat0 = Matrix(2, 2, [1, 1,
+                             1, 1])
+        mat1 = Matrix(2, 2, [1, 1,
+                             1, 1])
+        result = mat0 - mat1
+        self.assertEqual(result, Matrix(2, 2, [0, 0,
+                                               0, 0]))
+
     def test__LinearMatrix2x2_Mult_Matrix2x2__Valid(self):
         mat0 = Matrix(2, 2, [1, 1,
                              1, 1])
