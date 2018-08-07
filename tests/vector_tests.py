@@ -1,6 +1,6 @@
 import unittest
 
-from pymath.algebra.linear.vector import Vector, VectorT
+from pymath.linear.algebra.vector import Vector, VectorT
 
 
 class Testing_LinearVector(unittest.TestCase):

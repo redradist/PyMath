@@ -1,4 +1,4 @@
-from pymath.algebra.linear.matrix import Matrix
+from pymath.linear.algebra.matrix import Matrix
 
 
 class Vector(Matrix):
