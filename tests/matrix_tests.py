@@ -1,6 +1,6 @@
 import unittest
 
-from pymath.linear.algebra.matrix import Matrix
+from pymath.algebra.linear.matrix import Matrix
 
 
 class Testing_LinearMatrix(unittest.TestCase):

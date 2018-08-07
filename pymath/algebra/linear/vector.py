@@ -1,4 +1,4 @@
-from pymath.linear.algebra.matrix import Matrix
+from pymath.algebra.linear.matrix import Matrix
 
 
 class Vector(Matrix):
@@ -10,10 +10,10 @@ class Vector(Matrix):
 
     def __mul__(self, other):
         if isinstance(other, Vector):
-            if other._num_cols == 1:
-                return Vector(*(our_value * other_value for our_value, other_value in zip(self._values, other._values)))
+            if other._num_rows != 1:
+                raise ValueError(f'{other} should be transpose Vector')
             else:
-                return sum(our_value*other_value for our_value, other_value in zip(self._values, other._values))
+                return sum(x * y for x, y in zip(self._values, other._values))
         elif isinstance(other, Matrix):
             return Matrix.__mul__(self, other)
 
@@ -33,12 +33,13 @@ class VectorT(Vector):
 
     def __mul__(self, other):
         if isinstance(other, Vector):
-            if other._num_rows == 1:
-                return Vector(*(our_value * other_value for our_value, other_value in zip(self._values, other._values)))
+            if other._num_cols != 1:
+                return ValueError(f'{other} should be general Vector')
             else:
-                return sum(our_value*other_value for our_value, other_value in zip(self._values, other._values))
+                return sum(x * y for x, y in zip(self._values, other._values))
         elif isinstance(other, Matrix):
             return Matrix.__mul__(self, other)
+
 
 # Aliases
 CVector = Vector
