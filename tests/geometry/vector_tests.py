@@ -1,6 +1,6 @@
 import unittest
 
-from pymath.geometry.vector import Vector
+from pymath.geometry.vector import Vector2D
 
 
 class Testing_GeometryVector(unittest.TestCase):
@@ -13,31 +13,29 @@ class Testing_GeometryVector(unittest.TestCase):
         pass
 
     def test__GeometryVector2_Mult_GeometryVector2__Valid(self):
-        vec0 = Vector(0, 1)
-        vec1 = Vector(1, 2)
+        vec0 = Vector2D(0, 1)
+        vec1 = Vector2D(1, 2)
         result = vec0 * vec1
-        self.assertEqual(result, Vector(0, 2))
+        self.assertEqual(2, result)
 
     def test__GeometryVector3_Mult_GeometryVector3__Valid(self):
-        vec0 = Vector(0, 1, 2)
-        vec1 = Vector(1, 2, 2)
+        vec0 = Vector2D(1, 2)
+        vec1 = Vector2D(1, 2)
         result = vec0 * vec1
-        self.assertEqual(result, Vector(0, 2, 4))
+        self.assertEqual(5, result)
 
     def test__GeometryVector4_Mult_GeometryVector4__Valid(self):
-        vec0 = Vector(0, 1, 2, 8)
-        vec1 = Vector(1, 2, 2, 8)
+        vec0 = Vector2D(2, 3)
+        vec1 = Vector2D(1, 2)
         result = vec0 * vec1
-        self.assertEqual(result, Vector(0, 2, 4, 64))
+        self.assertEqual(8, result)
 
     def test__GeometryVector4_Mult_GeometryVector5__Invalid(self):
-        vec0 = Vector(0, 1, 2, 8)
-        vec1 = Vector(1, 2, 2, 8, 14)
         with self.assertRaises(ValueError) as context:
-            result = vec0 * vec1
+            vec0 = Vector2D(0, 1, 2, 8)
+            vec1 = Vector2D(1, 2, 2, 8, 14)
 
     def test__GeometryVector5_Mult_GeometryVector4__Invalid(self):
-        vec0 = Vector(0, 1, 2, 8, 14)
-        vec1 = Vector(1, 2, 2, 8)
         with self.assertRaises(ValueError) as context:
-            result = vec0 * vec1
+            vec0 = Vector2D(0, 1, 2, 8, 14)
+            vec1 = Vector2D(1, 2, 2, 8)

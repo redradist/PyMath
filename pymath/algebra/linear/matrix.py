@@ -84,9 +84,10 @@ class Matrix:
 
         pass
 
+
 class Identity(Matrix):
     """
-
+    Class for representation Identity Matrix
     """
     def __init__(self, num_rows, num_cols):
         values = []

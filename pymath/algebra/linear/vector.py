@@ -42,7 +42,7 @@ class VectorT(Vector):
 
 
 # Aliases
-CVector = Vector
-ColVector = Vector
-RVector = VectorT
-RowVector = VectorT
+CVector = Vector        # Column vector
+ColVector = Vector      # Column vector
+RVector = VectorT       # Row vector
+RowVector = VectorT     # Row vector
