@@ -1,3 +1,4 @@
+import math
 from math import sqrt
 
 from pymath.geometry.point import Point2D, Point3D
@@ -40,6 +41,14 @@ class Vector2D:
 
     def module(self):
         return sqrt(self.dx**2 + self.dy**2)
+
+    def get_angle_from(self, right):
+        sum = (self * right) / (self.module() * right.module())
+        if sum > 1:
+            sum = 1
+        elif sum < -1:
+            sum = -1
+        return math.acos(sum)
 
 
 Point2D.__sub__ = lambda self, other: Vector2D(self.x - other.x, self.y - other.y)
@@ -89,6 +98,14 @@ class Vector3D:
     def module(self):
         return sqrt(self.dx**2 + self.dy**2 + self.dz**2)
 
+    def get_angle_from(self, right):
+        sum = (self * right) / (self.module() * right.module())
+        if sum > 1:
+            sum = 1
+        elif sum < -1:
+            sum = -1
+        return math.acos(sum)
 
-Vector3D.__sub__ = lambda self, other: Vector3D(self.x - other.x, self.y - other.y, self.z - other.z)
-Vector3D.__rsub__ = lambda self, other: Vector3D(other.x - self.x, other.y - self.y, other.z - self.z)
+
+Point3D.__sub__ = lambda self, other: Vector3D(self.x - other.x, self.y - other.y, self.z - other.z)
+Point3D.__rsub__ = lambda self, other: Vector3D(other.x - self.x, other.y - self.y, other.z - self.z)

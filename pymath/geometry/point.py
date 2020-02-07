@@ -27,3 +27,22 @@ class Point3D:
 
     def __ne__(self, other):
         return not self.__ne__(other)
+
+
+class Point:
+    def __init__(self, *coords):
+        self.coords = coords
+
+    def __hash__(self):
+        hash_code = 0
+        for coord in self.coords:
+            hash_code ^= hash(coord)
+        return hash_code
+
+    def __eq__(self, other):
+        return len(self.coords) == len(other.coords) and \
+               (all(left == right for left, right in zip(self.coords, other.coords)) or
+                all(left == right for left, right in zip(self.coords, reversed(other.coords))))
+
+    def __ne__(self, other):
+        return not self.__ne__(other)

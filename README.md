@@ -1,5 +1,4 @@
-# PyML
+# PyMath
 
 ### Description
-PyML is a package for developing Machine Learning algorithms and
-Neural Networks.
+PyMath is a package for Mathematical primitives that is easy to use and extend.
